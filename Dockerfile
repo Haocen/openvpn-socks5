@@ -9,7 +9,7 @@ RUN true \
    && true
 
 # Add an unprivileged user.
-RUN adduser -S -D -u 8062 -H sockd \
+RUN adduser -S -D -u 8062 -H sockd
 COPY openvpn.sh /usr/bin/
 COPY sockd.conf /etc/
 
