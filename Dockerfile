@@ -3,17 +3,13 @@ FROM alpine
 LABEL org.opencontainers.image.source="https://github.com/Haocen/openvpn-socks"
 
 RUN true \
-   && apk add --update-cache openvpn dante-server bash openresolv openrc sed curl ip6tables iptables shadow tini tzdata dumb-init \
+   && apk add --update-cache openvpn dante-server bash openresolv openrc sed curl ip6tables iptables shadow tini tzdata dumb-init linux-pam \
    && addgroup -S vpn \
    && rm -rf /var/cache/apk/* \
    && true
 
-RUN set -x \
-    # Runtime dependencies.
-   && apk add --no-cache \
-        linux-pam \
-    # Add an unprivileged user.
-   && adduser sockd
+# Add an unprivileged user.
+RUN adduser -S -D -u 8062 -H sockd \
 COPY openvpn.sh /usr/bin/
 COPY sockd.conf /etc/
 
