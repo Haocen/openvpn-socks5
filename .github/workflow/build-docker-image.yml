@@ -3,7 +3,7 @@ name: Build Images and push to ghcr.io
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   push-store-image:
