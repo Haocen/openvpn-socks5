@@ -8,16 +8,18 @@ RUN true \
    && rm -rf /var/cache/apk/* \
    && true
 
-COPY openvpn.sh /usr/bin/
+COPY --chmod=0755 openvpn.sh /usr/bin/
 COPY sockd.conf /etc/
 
-ADD start.sh /
-RUN chmod +x /start.sh
+COPY --chmod=0755 start.sh /
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=300s --retries=1 \
    CMD curl --fail 'www.baidu.com' || exit 1
 
 VOLUME ["/vpn"]
+
+ENV PORT=1080
+ENV TUN_DEVICE=tun0
 
 CMD ["/start.sh"]
 ENTRYPOINT ["dumb-init"]
