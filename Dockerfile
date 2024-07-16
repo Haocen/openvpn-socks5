@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/Haocen/openvpn-socks"
 
 RUN true \
    && apk add --update-cache openvpn bash openresolv openrc sed curl ip6tables iptables shadow tini tzdata \
-   && addgroup -S vpn && \
+   && addgroup -S vpn \
    && rm -rf /var/cache/apk/* \
    && true
 
