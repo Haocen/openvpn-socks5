@@ -13,7 +13,7 @@ RUN set -x \
    && apk add --no-cache \
         linux-pam \
     # Add an unprivileged user.
-   && adduser -S -D -u 8062 -H sockd
+   && adduser -u 8062 sockd
 COPY openvpn.sh /usr/bin/
 COPY sockd.conf /etc/
 
