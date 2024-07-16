@@ -37,10 +37,13 @@ You will see the automatic interactive API documentation provided by Swagger UI.
 ## Docker image
 ### Run it
 
+Find images here:
+https://github.com/Haocen/openvpn-socks5/packages
+
 ```
 docker run -it --cap-add=NET_ADMIN --device /dev/net/tun \
            -p your_port:1080 --dns 8.8.4.4 \
-           -v /your/openvpn/directory:/vpn -d saronqw/openvpn-socks5
+           -v /your/openvpn/directory:/vpn -d ghcr.io/haocen/openvpn-socks5
 ```
 
 Or you can build your own image first, and then run it. 
