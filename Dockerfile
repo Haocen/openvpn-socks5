@@ -8,8 +8,6 @@ RUN true \
    && rm -rf /var/cache/apk/* \
    && true
 
-# Add an unprivileged user.
-RUN adduser -u 8062 sockd
 COPY openvpn.sh /usr/bin/
 COPY sockd.conf /etc/
 
